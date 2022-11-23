@@ -45,6 +45,18 @@ describe('subaru routes', () => {
       ]
     `);
   });
+  it('GET /subaru/1 should return subaru details', async () => {
+    const resp = await request(app).get('/subaru/1');
+    expect(resp.status).toEqual(200);
+    expect(resp.body).toMatchInlineSnapshot(`
+      Object {
+        "id": "1",
+        "model": "BRZ",
+        "type": "coupe",
+        "year": 2017,
+      }
+    `);
+  });
   afterAll(() => {
     pool.end();
   });
