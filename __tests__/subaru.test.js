@@ -83,6 +83,13 @@ describe('subaru routes', () => {
     const resp = await request(app).get('/subaru/456');
     expect(resp.status).toBe(404);
   });
+  it('DELETE /subaru/1 should delete subaru #1', async () => {
+    const resp = await request(app).delete('/subaru/1');
+    expect(resp.status).toBe(204);
+
+    const getResp = await request(app).get('/subaru/1');
+    expect(getResp.status).toBe(404);
+  });
   afterAll(() => {
     pool.end();
   });
