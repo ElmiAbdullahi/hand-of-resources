@@ -57,6 +57,23 @@ describe('subaru routes', () => {
       }
     `);
   });
+  it('POST /subaru should create a new subaru in the database', async () => {
+    const newSubaru = {
+      model: 'Outback',
+      type: 'wagon',
+      year: '2021',
+    };
+    const resp = await request(app).post('/subaru').send(newSubaru);
+    expect(resp.status).toBe(200);
+    expect(resp.body).toMatchInlineSnapshot(`
+      Object {
+        "id": "6",
+        "model": "Outback",
+        "type": "wagon",
+        "year": 2021,
+      }
+    `);
+  });
   afterAll(() => {
     pool.end();
   });
