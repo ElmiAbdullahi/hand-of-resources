@@ -74,6 +74,11 @@ describe('subaru routes', () => {
       }
     `);
   });
+  it('PUT /subaru/1 should update subaru with id #1', async () => {
+    const resp = await request(app).put('/subaru/1').send({ model: 'Outback' });
+    expect(resp.status).toBe(200);
+    expect(resp.body.model).toBe('Outback');
+  });
   afterAll(() => {
     pool.end();
   });
