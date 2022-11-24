@@ -79,6 +79,10 @@ describe('subaru routes', () => {
     expect(resp.status).toBe(200);
     expect(resp.body.model).toBe('Outback');
   });
+  it('GET /subaru/xyz should return a 404', async () => {
+    const resp = await request(app).get('/subaru/456');
+    expect(resp.status).toBe(404);
+  });
   afterAll(() => {
     pool.end();
   });
