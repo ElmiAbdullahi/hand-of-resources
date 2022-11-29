@@ -24,15 +24,27 @@ VALUES
 ('Forester', 'SUV', 2019);
 
 -- Table #2
--- DROP TABLE IF EXISTS toyota;
+DROP TABLE IF EXISTS toyota;
 
--- CREATE TABLE toyota (
---     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
---     model VARCHAR NOT NULL,
---     type VARCHAR NOT NULL,
---     year INT NOT NULL
+CREATE TABLE toyota (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    model VARCHAR NOT NULL,
+    type VARCHAR NOT NULL,
+    year INT NOT NULL
 
--- );
+);
 
--- INSERT INFO
+INSERT INTO toyota(
+    model,
+    type,
+    year
+)
 
+VALUES
+('Corolla', 'compact', 2017),
+('Tacoma', 'pickup', 2018),
+('Highlander', 'SUV', 2019),
+('Rav4', 'SUV', 2020),
+('Camry', 'mid-size', 2021);
+
+-- Table #3
