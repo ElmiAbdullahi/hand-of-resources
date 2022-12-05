@@ -45,6 +45,11 @@ describe('toyota routes', () => {
       ]
     `);
   });
+  it('GET /toyota/1 should return toyota details', async () => {
+    const resp = await request(app).get('/toyota/1');
+    expect(resp.status).toEqual(200);
+    expect(resp.body).toMatchInlineSnapshot();
+  });
   afterAll(() => {
     pool.end();
   });
