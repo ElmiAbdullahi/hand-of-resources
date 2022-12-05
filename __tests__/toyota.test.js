@@ -65,7 +65,19 @@ describe('toyota routes', () => {
     };
     const resp = await request(app).post('/toyota').send(newToyota);
     expect(resp.status).toBe(200);
-    expect(resp.body).toMatchInlineSnapshot();
+    expect(resp.body).toMatchInlineSnapshot(`
+      Object {
+        "id": "6",
+        "model": "Tacoma",
+        "type": "pickup",
+        "year": 2018,
+      }
+    `);
+  });
+  it('PUT /toyota/1 should update toyota with id #1', async () => {
+    const resp = await request(app).put('/toyota/1').send({ model: 'Tacoma' });
+    expect(resp.status).toBe(200);
+    expect(resp.body.model).toBe('Tacoma');
   });
   afterAll(() => {
     pool.end();
