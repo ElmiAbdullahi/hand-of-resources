@@ -83,6 +83,13 @@ describe('toyota routes', () => {
     const resp = await request(app).get('/toyota/456');
     expect(resp.status).toBe(404);
   });
+  it('DELETE /toyota/1 should delete toyota #1', async () => {
+    const resp = await request(app).delete('/toyota/1');
+    expect(resp.status).toBe(204);
+
+    const getResp = await request(app).get('/toyota/1');
+    expect(getResp.status).toBe(404);
+  });
   afterAll(() => {
     pool.end();
   });
