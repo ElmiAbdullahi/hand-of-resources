@@ -48,6 +48,23 @@ describe('toyota routes', () => {
   it('GET /toyota/1 should return toyota details', async () => {
     const resp = await request(app).get('/toyota/1');
     expect(resp.status).toEqual(200);
+    expect(resp.body).toMatchInlineSnapshot(`
+      Object {
+        "id": "1",
+        "model": "Corolla",
+        "type": "compact",
+        "year": 2017,
+      }
+    `);
+  });
+  it('POST /toyota should create a new toyota in the database', async () => {
+    const newToyota = {
+      model: 'Tacoma',
+      type: 'pickup',
+      year: '2018',
+    };
+    const resp = await request(app).post('/toyota').send(newToyota);
+    expect(resp.status).toBe(200);
     expect(resp.body).toMatchInlineSnapshot();
   });
   afterAll(() => {
